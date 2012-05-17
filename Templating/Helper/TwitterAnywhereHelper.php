@@ -61,6 +61,16 @@ class TwitterAnywhereHelper extends Helper
         ));
     }
 
+    public function tweetButton($parameters = array(), $name = null)
+    {
+        $name = $name ?: 'FOSTwitterBundle::tweet.html.twig';
+        return $this->templating->render($name, $parameters + array(
+            'data_via'      => '',
+            'data_hashtags' => 'tecnokey',
+            'button_name'   => 'Twittear',
+        ));
+    }
+
     /*
      *
      */

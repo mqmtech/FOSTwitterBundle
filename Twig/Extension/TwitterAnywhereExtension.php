@@ -27,6 +27,7 @@ class TwitterAnywhereExtension extends \Twig_Extension
             'twitter_anywhere_initialize' => new \Twig_Function_Method($this, 'renderInitialize', array('is_safe' => array('html'))),
             'twitter_anywhere_queue' => new \Twig_Function_Method($this, 'queue', array('is_safe' => array('html'))),
             'twitter_anywhere_setConfig' => new \Twig_Function_Method($this, 'setConfig', array('is_safe' => array('html'))),
+            'twitter_anywhere_tweet_button' => new \Twig_Function_Method($this, 'renderTweetButton', array('is_safe' => array('html'))),
         );
     }
 
@@ -54,6 +55,11 @@ class TwitterAnywhereExtension extends \Twig_Extension
     public function setConfig($key, $value)
     {
         return $this->container->get('fos_twitter.anywhere.helper')->setConfig($key, $value);
+    }
+
+    public function renderTweetButton($parameters = array(), $name = null)
+    {
+        return $this->container->get('fos_twitter.anywhere.helper')->tweetButton($parameters, $name ?: 'FOSTwitterBundle::tweet.html.twig');
     }
 
     /**
